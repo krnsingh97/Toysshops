@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -46,9 +47,9 @@ namespace Toyshops
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: ConfigurationManager.AppSettings["MicrosoftClientid"],
+                clientSecret: ConfigurationManager.AppSettings["MicrosoftClientSecret"]);
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
@@ -60,8 +61,8 @@ namespace Toyshops
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-               ClientId = "will-go-here",
-               ClientSecret = "will-go-here"
+               ClientId = ConfigurationManager.AppSettings["GoogleClientid"],
+               ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"]
             });
         }
     }
