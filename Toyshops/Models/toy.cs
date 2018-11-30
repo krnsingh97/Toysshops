@@ -8,7 +8,8 @@ namespace Toyshops.Models
 
     public partial class toy
     {
-       
+        public int toyId;
+
         [StringLength(50)]
         public string id { get; set; }
 

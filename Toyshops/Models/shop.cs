@@ -9,6 +9,9 @@ namespace Toyshops.Models
     [Table("shop")]
     public partial class shop
     {
+        public object toy;
+        internal int shopId;
+
         [StringLength(10)]
         public string id { get; set; }
 
@@ -20,5 +23,6 @@ namespace Toyshops.Models
 
         [StringLength(50)]
         public string Categories { get; set; }
+      //  public int ShopId { get; set; }
     }
 }
